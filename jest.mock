@@ -1,0 +1,13 @@
+import { render, screen } from '@testing-library/react';
+import App from './App';
+import * as React from 'react';
+import { AppContext } from './AppContext';
+
+test('renders learn react link', () => {
+  // Mock the context value
+  jest.spyOn(React, 'useContext').mockReturnValue({ basename: '/myapp' });
+
+  render(<App />);
+  const linkElement = screen.getByText(/learn react/i);
+  expect(linkElement).toBeInTheDocument();
+});
